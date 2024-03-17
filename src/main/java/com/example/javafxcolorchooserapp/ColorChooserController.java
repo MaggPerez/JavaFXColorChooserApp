@@ -83,7 +83,7 @@ public class ColorChooserController {
         redTextField.textProperty().bindBidirectional(redSlider.valueProperty(), NumberFormat.getIntegerInstance());
         blueTextField.textProperty().bindBidirectional(blueSlider.valueProperty(), NumberFormat.getIntegerInstance());
         greenTextField.textProperty().bindBidirectional(greenSlider.valueProperty(), NumberFormat.getIntegerInstance());
-        alphaTextField.textProperty().bindBidirectional(alphaSlider.valueProperty(), NumberFormat.getIntegerInstance());
+        alphaTextField.textProperty().bindBidirectional(alphaSlider.valueProperty(), NumberFormat.getNumberInstance());
 
 
     }
