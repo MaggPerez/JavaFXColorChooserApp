@@ -8,6 +8,10 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.StringConverter;
+import javafx.util.converter.NumberStringConverter;
+
+import java.text.NumberFormat;
 
 public class ColorChooserController {
     // instance variables for interacting with GUI components
@@ -28,15 +32,6 @@ public class ColorChooserController {
     private double alpha = 1.0;
 
     public void initialize() {
-        // bind TextField values to corresponding Slider values
-        redTextField.textProperty().bind(
-                redSlider.valueProperty().asString("%.0f"));
-        greenTextField.textProperty().bind(
-                greenSlider.valueProperty().asString("%.0f"));
-        blueTextField.textProperty().bind(
-                blueSlider.valueProperty().asString("%.0f"));
-        alphaTextField.textProperty().bind(
-                alphaSlider.valueProperty().asString("%.2f"));
 
         // listeners that set Rectangle's fill based on Slider changes
         redSlider.valueProperty().addListener(
@@ -79,5 +74,17 @@ public class ColorChooserController {
                     }
                 }
         );
+
+
+
+
+
+        //BindBidirectional
+        redTextField.textProperty().bindBidirectional(redSlider.valueProperty(), NumberFormat.getIntegerInstance());
+        blueTextField.textProperty().bindBidirectional(blueSlider.valueProperty(), NumberFormat.getIntegerInstance());
+        greenTextField.textProperty().bindBidirectional(greenSlider.valueProperty(), NumberFormat.getIntegerInstance());
+        alphaTextField.textProperty().bindBidirectional(alphaSlider.valueProperty(), NumberFormat.getIntegerInstance());
+
+
     }
 }
